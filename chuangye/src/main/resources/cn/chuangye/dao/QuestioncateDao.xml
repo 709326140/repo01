@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chuangye.dao.QuestioncateDao">
+
+  <sql id="Base_Column_List">
+    qc_id, qc_name
+  </sql>
+
+  <select id="selectByKey" parameterType="int" resultType="cn.chuangye.bean.Questioncate">
+    select 
+    <include refid="Base_Column_List" />
+    from questioncate
+    where qc_id = #{qcId}
+  </select>
+
+  <select id="selectAll" resultType="cn.chuangye.bean.Questioncate">
+    select
+    <include refid="Base_Column_List" />
+    from questioncate
+  </select>
+
+  <delete id="delete" parameterType="int">
+    delete from questioncate
+    <where>
+      <foreach close=")" separator="," open="qc_id in(" item="qcId" collection="qcIds">#{qcId} </foreach>
+    </where>
+  </delete>
+
+
+  <insert id="insert"  parameterType="cn.chuangye.bean.Questioncate">
+    insert into questioncate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="qcName != null">
+        qc_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="qcName != null">
+        #{qcName},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="cn.chuangye.bean.Questioncate">
+    update questioncate
+    <set>
+      <if test="qcName != null">
+        qc_name = #{qcName},
+      </if>
+    </set>
+    where qc_id = #{qcId}
+  </update>
+
+</mapper>
