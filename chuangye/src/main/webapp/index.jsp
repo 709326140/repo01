@@ -9,10 +9,13 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="layui/css/layui.css">
-    <script src="layui/layui.js"></script>
+    <% pageContext.setAttribute("APP_PATH",request.getContextPath()); %>
+    <link rel="stylesheet" href="${APP_PATH}/WEB-INF/layui/css/layui.css">
+    <script src="${APP_PATH}/WEB-INF/layui/layui.js"></script>
 </head>
 <body>
 
+
 </body>
+
 </html>
