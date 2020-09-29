@@ -13,7 +13,8 @@ public class Test_01 {
         //bean.update(new Questioncate().setQcId(2).setQcName("市场经济"));
         //System.out.println(bean.selectByKey(1));
         //bean.insert(new Questioncate().setQcName("创业"));
-        //bean.delete(3,4,5,6,7);
+
+        bean.delete(3,4,5,6);
         bean.selectAll().forEach(System.out::println);
     }
 }
